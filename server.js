@@ -36,3 +36,15 @@ app.get("/notes", function (req, res) {
 app.get("/api/notes", function (req, res) {
     return res.json(notesArray);
 });
+
+// POSTs
+
+// Route for saving a note to db.json
+app.post("/api/notes", function (req, res) {
+    // req.body hosts is equal to the JSON post sent from the UI
+    let newNoteRequest = req.body;
+    console.log(newNoteRequest);
+
+    notesArray.push(newNoteRequest);
+    res.sendStatus(200);
+});

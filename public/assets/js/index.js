@@ -108,10 +108,10 @@ const handleNoteSave = function () {
 };
 
 // A function for saving a note to the db
-const saveNote = function (note) {
+const saveNote = function (newNote) {
   return $.ajax({
     url: "/api/notes",
-    data: note,
+    data: newNote,
     method: "POST"
   });
 };

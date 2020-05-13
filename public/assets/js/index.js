@@ -20,7 +20,7 @@ let activeNote = {};
 // -------------------------------------------------------------------
 
 $(document).ready(function () {
-  console.log('Page loaded');
+  console.log('Welcome to Notiker: A NodeJS and Express powered note-taking app');
   // When typing noteTitle or noteText, check if a note's title or text are empty - hide or show the save button
   $noteTitle.on("keyup", handleRenderSaveBtn);
   $noteText.on("keyup", handleRenderSaveBtn);
@@ -58,7 +58,7 @@ const renderActiveNote = function () {
 
   // If there is an id, set attributes to read-only
   // Otherwise, keep note fields blank
-  if (activeNote.id) {
+  if (activeNote.id >= 0) {
     $noteTitle.attr("readonly", true);
     $noteText.attr("readonly", true);
     $noteTitle.val(activeNote.title);

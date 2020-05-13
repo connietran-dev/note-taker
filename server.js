@@ -41,10 +41,25 @@ app.get("/api/notes", function (req, res) {
 
 // Route for saving a note to db.json
 app.post("/api/notes", function (req, res) {
-    // req.body hosts is equal to the JSON post sent from the UI
+    // req.body is JSON post sent from UI
     let newNoteRequest = req.body;
     console.log(newNoteRequest);
 
     notesArray.push(newNoteRequest);
+
+    // Set id property of newNoteRequest to its index in notesArray
+    newNoteRequest.id = notesArray.indexOf(newNoteRequest);
+    
     res.sendStatus(200);
+});
+
+// DELETEs
+
+app.delete("/api/notes/:id", function (req, res) {
+    // id is index of note in notesArray
+    let id = parseInt(req.params.id);
+    // Use id index to remove item from notesArray
+    notesArray.splice(id, 1);
+
+    return res.json(notesArray);
 });

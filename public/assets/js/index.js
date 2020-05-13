@@ -6,6 +6,7 @@ const $noteTitle = $(".note-title");
 const $noteText = $(".note-textarea");
 const $saveNoteBtn = $(".save-note");
 const $newNoteBtn = $(".new-note");
+const $newNoteIcon = $(".fa-pen .new-note");
 
 // Note list ul
 const $noteList = $(".list-container .list-group");
@@ -29,10 +30,11 @@ $(document).ready(function () {
 
   // When New button is clicked, allow user to enter a new note
   $newNoteBtn.on("click", handleNewNoteView);
+  $newNoteIcon.on("click", handleNewNoteView);
 
   // When list item is clicked, display it as the activeNote
   $noteList.on("click", ".list-group-item", handleNoteView);
-  // When list item 
+  // When delete icon on list item is clicked, delete note
   $noteList.on("click", ".delete-note", handleNoteDelete);
 });
 

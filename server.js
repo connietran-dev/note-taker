@@ -1,16 +1,17 @@
 /* DEPENDENCIES */
 const express = require('express');
-var path = require('path');
+const path = require('path');
 
-var notesArray = require("./db/db.json");
+const notesArray = require("./db/db.json");
 
 /* SETS UP THE EXPRESS APP */
-var app = express();
-var PORT = process.env.PORT || 3000;
+const app = express();
+const PORT = process.env.PORT || 3000;
 
 /* SETS UP THE EXPRESS APP TO HANDLE DATA PARSING */
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+// Use /public as root folder
 app.use(express.static(__dirname + '/public'));
 
 /* STARTS THE SERVER TO BEGIN LISTENING */

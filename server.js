@@ -53,6 +53,7 @@ app.post("/api/notes", function (req, res) {
     newNoteRequest.id = notesArray.indexOf(newNoteRequest);
 
     res.json({
+        isError: false,
         message: "Note successfully saved",
         port: PORT,
         status: 200,
@@ -72,6 +73,7 @@ app.delete("/api/notes/:id", function (req, res) {
 
     res.json({
         data: notesArray,
+        isError: false,
         message: "Note successfully deleted",
         port: PORT,
         status: 200,

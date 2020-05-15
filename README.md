@@ -1,4 +1,4 @@
-# Notiker: An Express Note Taker
+# Notiker: An Express Note Taking App
 
 ## Description
 
@@ -8,9 +8,6 @@ The application is deployed and hosted on Heroku from this GitHub repo. The live
 
 
 ![Notiker homepage](public/assets/images/homepage.png)
-
-
-I am interested to know that my backend is working properly so feel free to write me a note on the Heroku page - as long as my server does not refresh, your note should show up ;)
 
 
 
@@ -26,6 +23,7 @@ The application allow users to create and save notes, view previously saved note
 
 The lorem ipsum for the first few notes are quotes from Carl Sagan thanks to [Sagan Ipsum](http://saganipsum.com/).
 
+![Notiker note taking functionality](public/assets/images/notetaking.gif)
 
 
 ## Technology and Methodology

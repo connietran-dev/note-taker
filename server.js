@@ -1,6 +1,7 @@
 /* DEPENDENCIES */
 const express = require('express');
 const path = require('path');
+const fs = require ('fs');
 
 const notesArray = require("./db/db.json");
 
@@ -35,7 +36,7 @@ app.get("/notes", function (req, res) {
 
 // Returns all notes from notesArray when getNotes() is called in index.js
 app.get("/api/notes", function (req, res) {
-    return res.json(notesArray);
+    return res.json(JSON.parse(fs.readFileSync("./db/db.json")));
 });
 
 
@@ -45,13 +46,14 @@ app.get("/api/notes", function (req, res) {
 app.post("/api/notes", function (req, res) {
     // req.body is JSON post sent from UI
     let newNoteRequest = req.body;
-    console.log(newNoteRequest);
+    console.log("New request: ", newNoteRequest);
 
     notesArray.push(newNoteRequest);
-
     // Set id property of newNoteRequest to its index in notesArray
     newNoteRequest.id = notesArray.indexOf(newNoteRequest);
 
+    fs.writeFileSync("./db/db.json", JSON.stringify(notesArray));
+    
     res.json({
         isError: false,
         message: "Note successfully saved",
@@ -69,10 +71,13 @@ app.delete("/api/notes/:id", function (req, res) {
     // id is index of note in notesArray
     let id = parseInt(req.params.id);
     // Use id index to remove item from notesArray
-    notesArray.splice(id, 1);
+    let removeItemArray = notesArray.filter(item => item.id != id);
+
+    removeItemArray.forEach(element => element.id = removeItemArray.indexOf(element));
+
+    fs.writeFileSync("./db/db.json", JSON.stringify(removeItemArray));
 
     res.json({
-        data: notesArray,
         isError: false,
         message: "Note successfully deleted",
         port: PORT,
